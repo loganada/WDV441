@@ -1,3 +1,3 @@
-<html>
-    <body>yay!</body>    
-</html>
+<?php
+require_once('../tpl/article-save-success.tpl.php');
+?>
