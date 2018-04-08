@@ -3,19 +3,20 @@
 // usage new: http://localhost:8080/WDV441_2018/week05/public_html/article-edit.php
 require_once('../inc/NewsArticles.class.php');
 
+
 $newsArticle = new NewsArticles();
 
 $articleDataArray = array();
 $articleErrorsArray = array();
 
 // load the article if we have it
-if (isset($_REQUEST['articleID']) && $_REQUEST['articleID'] > 0) 
+if (isset($_REQUEST['articleID']) && $_REQUEST['articleID'] > 0)
 {
     $newsArticle->load($_REQUEST['articleID']);
     $articleDataArray = $newsArticle->articleData;
 }
 
-if (isset($_POST['Cancel'])) 
+if (isset($_POST['Cancel']))
 {
     header("location: article-list.php");
     exit;
@@ -28,7 +29,7 @@ if (isset($_POST['Save']))
     // sanitize
     $articleDataArray = $newsArticle->santinize($articleDataArray);
     $newsArticle->set($articleDataArray);
-    
+
     // validate
     if ($newsArticle->validate())
     {
